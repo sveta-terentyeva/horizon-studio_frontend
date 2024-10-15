@@ -1,0 +1,11 @@
+{
+  "name": "horizon-studio_frontend",
+  "version": "1.0.0",
+  "description": "Horizon Studio Frontend Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Svitlana Terentyeva",
+  "license": "MIT"
+}
