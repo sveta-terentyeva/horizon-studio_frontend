@@ -1,0 +1,124 @@
+// reset default styles
+button
+  background: transparent
+  border: none
+  cursor: pointer
+  color: inherit
+  text-align: center
+  text-decoration: none
+  max-width: 100%
+  line-height: 1
+  padding: 0
+  transition: $trs-dur
+
+
+.button
+  display: inline-block
+  cursor: pointer
+  max-width: 100%
+  text-align: center
+  transition: $trs-dur
+  padding: 11px 15px 12px
+  font-family: $default-font
+  font-size: 16rem
+  font-weight: 700
+  line-height: 1.2
+  text-decoration: none
+  color: #ffffff
+  background: $c-accent
+  border: 1px solid $c-accent
+  border-radius: 0
+  &:hover
+    background-color: $c-accent-hover
+    border-color: $c-accent-hover
+    outline: 0
+    color: #fff
+    .button__arrow
+      transform: translateX(0.25em)
+  &:active
+    background-color: $c-accent-active
+    border-color: $c-accent-active
+    color: #fff
+  &[disabled]
+    background-color: $c-disabled
+    border-color: $c-disabled-text
+    color: $c-disabled-text
+    pointer-events: none
+    cursor: default
+    .button
+      &__loader
+        display: block
+      &__arrow-outer
+        display: none
+  &__content
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: 100%
+  &__icon
+    display: inline-block
+    vertical-align: middle
+    position: relative
+    font-size: 1.5em
+    width: 1em
+    + .button__text
+      margin-left: 0.6em
+  &__icon-img
+    +centerer()
+  &__text
+    vertical-align: middle
+    + .button__arrow-outer
+      margin-left: 2em
+    + .button__icon
+      margin-left: 1em
+  &__arrow-outer
+    position: relative
+    display: inline-block
+    &::before
+      content: ""
+      position: absolute
+      top: 50%
+      left: -1em
+      transform: translateY(-50%)
+      width: 1px
+      height: 1.5em
+      opacity: 0.2
+      +r($md)
+        height: 2.4167em
+  &__arrow
+    display: block
+    transition: transform 0.3s
+    font-size: 1.5em
+    min-width: 1em
+    position: relative
+    +r($md)
+      font-size: 2em
+  &__arrow-img
+    +centerer()
+  &__loader
+    display: none
+    min-width: 1em
+    position: relative
+    margin-left: 1.35em
+  &__loader-inner
+    +centerer()
+  &_bg_red
+    background-color: $c-red
+    border-color: $c-red
+
+  &_type_ghost
+    background: transparent
+    border-color: $c-accent
+    color: $c-accent
+    &:hover
+      background-color: $c-accent
+      border-color: $c-accent
+
+  &_size_small
+    padding: 10px
+  &_size_large
+    padding: 24px 24px 23px 32px
+    .button__arrow-outer::before
+      +rmin($md)
+        height: 3em

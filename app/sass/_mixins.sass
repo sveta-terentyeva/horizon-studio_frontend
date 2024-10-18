@@ -1,0 +1,128 @@
+@use 'sass:math'
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false )
+  @font-face
+    font-family: $font-family
+    font-weight: $weight
+    font-style: $style
+    font-display: swap
+
+    @if $asset-pipeline == true 
+      src: font-url('#{$file-path}.woff2') format('woff2'), font-url('#{$file-path}.woff') format('woff')
+    @else
+      src: url('#{$file-path}.woff2') format('woff2'), url('#{$file-path}.woff') format('woff')
+
+
+@mixin centerer($horizontal: true, $vertical: true) 
+  position: absolute
+  @if ($horizontal and $vertical) 
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  @else if ($horizontal) 
+    left: 50%
+    transform: translate(-50%, 0)
+  @else if ($vertical) 
+    top: 50%
+    transform: translate(0, -50%)
+
+
+//responsive mixins
+// width
+=r($width)
+  @media only screen and (max-width: $width)
+    @content
+
+=rmin($width)
+  @media only screen and (min-width: $width)
+    @content
+
+// height
+=rh($height)
+  @media only screen and (max-height: $height)
+    @content
+
+=rhmin($height)
+  @media only screen and (min-height: $height)
+    @content
+
+// default bg rules
+=bg
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+=bg-right
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: right center
+
+//run hardware acceleration.
+=gpu
+  transform: translate3d(0, 0, 0)
+
+//css triangle
+=arr($width, $height, $bg, $direction)
+  width: 0px
+  height: 0px
+  border-style: solid
+  @if $direction == t
+    border-width: 0 math.div($width, 2) + px $height + px math.div($width, 2) + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == r
+    border-width: $height / 2 + px 0 $height / 2 + px $width + px
+    border-color: transparent transparent transparent $bg
+  @if $direction == b
+    border-width: $height + px math.div($width, 2) + px 0 math.div($width, 2) + px
+    border-color: $bg transparent transparent transparent
+  @if $direction == l
+    border-width: $height / 2 + px $width + px $height / 2 + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == tl
+    border-width: $height + px $width + px 0 0
+    border-color: $bg transparent transparent transparent
+  @if $direction == tr
+    border-width: 0 $width + px $height + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == br
+    border-width: 0 0 $height + px $width + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == bl
+    border-width: $width + px 0 0 $height + px
+    border-color: transparent transparent transparent $bg
+// example
+// +arr(500,50, #000, l)
+// +arr(500,50, #000, bl)
+
+=hide-scrollbars
+  overflow: -moz-scrollbars-none
+  -ms-overflow-style: none
+  scrollbar-width: none
+  &::-webkit-scrollbar 
+    width: 0
+    height: 0
+
+=custom-scrollbar
+  scrollbar-color: rgba($c-text, 0.25) #f1f1f1
+  scrollbar-width: thin
+  &::-webkit-scrollbar
+    width: 4px
+    height: 4px
+    background-color: #f1f1f1
+    border-radius: 9px
+  &::-webkit-scrollbar-thumb
+    background-color: rgba($c-text, 0.25)
+    border-radius: 9px
+  &:hover
+    scrollbar-color: rgba($c-text, 0.7) #f1f1f1
+    &::-webkit-scrollbar-thumb
+      background-color: rgba($c-text, 0.7)
+
+=line-clamp($line-height: 1.2em, $lines: 3)
+  --lh: #{$line-height}
+  --lines: #{$lines}
+  overflow: hidden
+  display: -webkit-box
+  text-overflow: ellipsis
+  -webkit-box-orient: vertical
+  line-height: var(--lh)
+  height: calc(var(--lh) * var(--lines))
+  -webkit-line-clamp: var(--lines)

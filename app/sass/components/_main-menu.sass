@@ -1,0 +1,141 @@
+$mobile-breakpoint: $lg
+
+.main-menu
+  font-size: $default-font-size
+  +r($mobile-breakpoint)
+    text-align: left
+    padding: 0
+    z-index: -1
+    cursor: pointer
+    top: 0
+    top: calc(var(--main-header-height) - 2px)
+    bottom: 0
+    left: 0
+    right: 0
+    user-select: none
+    min-height: auto
+    box-shadow: none
+    padding: 0 
+    transform: scale3d(1, 0, 0)
+    transform-origin: 0 0
+    position: fixed
+    overflow: auto
+    -webkit-overflow-scrolling: touch
+    +custom-scrollbar
+    &.active
+      transition: 0.3s all ease
+      transform: none
+      padding-top: 3rem
+      background: #fff
+  &__inner
+    display: flex
+    align-items: center
+    +rmin($mobile-breakpoint)
+      position: relative
+      max-width: none
+      padding: 0
+    +r($mobile-breakpoint)
+      flex-direction: column
+      min-height: 100%
+  &__list
+    display: flex
+    align-items: center
+    +r($mobile-breakpoint)
+      display: block
+      width: 100%
+      user-select: none
+      z-index: 100
+      list-style-type: none
+      margin-left: 0
+      padding: 0 0 50rem
+      visibility: hidden
+      transform: scale3d(1, 0, 1)
+      // vertical top start
+      transform-origin: 50% 0
+      transition: 0.4s ease
+      &.active
+        visibility: visible
+        transform: scale3d(1, 1, 1)
+  &__item
+    position: relative
+    margin-right: 32rem
+    +r($xl)
+      margin-right: 16rem
+    +r($mobile-breakpoint)
+      margin: 0
+      padding: 10px 0
+    &:last-child
+      margin-right: 0
+    +r($mobile-breakpoint)
+      &.active
+        .main-menu__link
+          color: $c-accent
+  &__link
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    &:hover
+      color: $c-accent
+    &.active
+      color: $c-accent
+    +r($mobile-breakpoint)
+      text-align: center
+      height: auto
+      width: 100%
+      display: flex
+      padding: 1.15em 0
+      &:hover
+        color: $c-accent
+
+.menu-opener
+  position: relative
+  display: block
+  transition: 0.3s
+  --color: #{$c-text}
+  cursor: default
+  &.active
+    .menu-opener
+      &__lines
+        background-color: transparent
+        &::before
+          transform: rotate(45deg)
+        &::after
+          transform: rotate(-45deg)
+  &__inner
+    display: block
+    position: relative
+    cursor: pointer
+    z-index: 1002
+    width: 100%
+    height: 100%
+    padding: 23rem 0 23rem 21rem
+    transition: 0.3s
+  &__lines
+    display: block
+    position: relative
+    width: 23rem
+    height: 2px
+    background-color: var(--color)
+    border-radius: 9px
+    transition: 0.3s
+    &::before,
+    &::after
+      content: ""
+      position: absolute
+      left: 0
+      top: 0
+      height: 100%
+      width: 100%
+      background-color: var(--color)
+      border-radius: 9px
+      transition: 0.3s
+    &::before
+      transform: translateY(-8px)
+      +r($md)
+        transform: translateY(-6px)
+    &::after
+      transform: translateY(8px)
+      +r($md)
+        transform: translateY(6px)

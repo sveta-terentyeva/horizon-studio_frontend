@@ -1,0 +1,29 @@
+.spinning-loader
+  display: inline-block
+  vertical-align: middle
+  position: relative
+  width: 1em
+  height: 1em
+  &__part
+    box-sizing: border-box
+    display: block
+    position: absolute
+    width: 0.8em
+    height: 0.8em
+    margin: 0.1em
+    border: 0.1em solid currentColor
+    border-radius: 50%
+    animation: spinning-loader 1.2s linear infinite
+    border-color: currentColor transparent transparent transparent
+    &:nth-child(1)
+      animation-delay: -0.45s
+    &:nth-child(2)
+      animation-delay: -0.3s
+    &:nth-child(3)
+      animation-delay: -0.15s
+
+@keyframes spinning-loader
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

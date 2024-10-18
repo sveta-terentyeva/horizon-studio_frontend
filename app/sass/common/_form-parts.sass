@@ -1,0 +1,40 @@
+::placeholder
+  color: $c-gray
+  line-height: normal
+
+.input
+  display: block
+  width: 100%
+  max-width: 100%
+  padding: 17rem 20rem
+  border: 1px solid $c-border
+  border-radius: 0
+  background: transparent
+  font-size: $default-font-size
+  font-weight: 400
+  line-height: 1.5
+  text-overflow: ellipsis
+  color: $c-text
+  caret-color: currentColor
+  box-shadow: none
+  transition: $trs-dur
+  &:focus
+    outline: 0
+    border-color: $c-accent
+  // hide placeholder on focus
+  // &:focus::placeholder
+  // opacity: 0
+  // transition: opacity 0.3s ease
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:focus, 
+  &:-webkit-autofill:active  
+    transition: background-color 5000s ease-in-out 0s
+    -webkit-text-fill-color: currentColor
+    caret-color: currentColor
+  &_style_line
+    border: 2px solid $c-border
+    border-width: 0 0 2px
+    padding: 8rem 0 6rem
+  &.error
+    border-color: $c-red
