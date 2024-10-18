@@ -1,0 +1,61 @@
+{% import "mixins/_mixins.njk" as mixins %}
+{% import "data/_data.njk" as data %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>
+      {% if title %}{{ title }}
+      {% else %}
+      Project Title
+      {% endif %}
+    </title>
+    <meta name="description" content="{{ description }}">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Basic Images Start -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="icon" href="img/favicon/favicon.ico">
+    <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <!-- Basic Images End -->
+
+    <!-- Custom Browsers Color Start -->
+    <meta name="theme-color" content="#27427E">
+    <!-- Custom Browsers Color End -->
+
+    <link rel="stylesheet" href="css/main.min.css">
+  </head>
+
+  <body>
+    <a href="#main" class="skip-to-main-content-link">Skip to main content</a>
+
+    <!-- Header -->
+    {% block header %}
+      {% include "partials/_header.njk" %}
+    {% endblock %}
+    <!-- /Header -->
+
+    <!-- Main Content -->
+    <main class="main" id="main">
+      {% block content %}{% endblock %}
+    </main>
+    <!-- /Main Content -->
+
+    <!-- Footer -->
+    {% block footer %}
+      {% include "partials/_footer.njk" %}
+    {% endblock %}
+    <!-- /Footer -->
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+  </body>
+</html>

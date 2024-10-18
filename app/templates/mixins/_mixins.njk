@@ -1,0 +1,49 @@
+{% import "data/_data.njk" as data %}
+
+{% macro icon(i, class = '') %}
+  <svg class="{% if class %}{{ class }} {% endif %}sprite-icon">
+    <use xlink:href="img/svg/sprite.svg#{{i}}"></use>
+  </svg>
+{% endmacro %}
+
+{% macro webpPicture(path, dist = data.img, pictureClass = "", imgClass = "", alt = "", lazyLoading = false, lazySizes) %}
+  <picture{% if pictureClass %} class="{{ pictureClass }}"{% endif %}>
+    <source srcset="{{ dist }}{{ path.slice(0, -4) }}.webp" type="image/webp">
+    <source srcset="{{ dist }}{{ path }}">
+    <img src="{{ dist }}{{ path }}"{% if imgClass %} class="{{ imgClass }}"{% endif %}{% if alt %} alt="{{ alt }}"{% endif %}{% if lazyLoading === true %} loading="lazy"{% endif %}{% if lazySizes %} width="{{ lazySizes.w }}" height="{{ lazySizes.h }}"{% endif %}>
+  </picture>
+{% endmacro %}
+
+{% macro doublePicture(path, dist = data.img, pictureClass = "", imgClass = "", alt = "", lazyLoading = false, lazySizes) %}
+  <picture{% if pictureClass %} class="{{ pictureClass }}"{% endif %}>
+    <source srcset="{{ dist }}{{ path.slice(0, -4) }}.webp 1x, {{ dist }}{{ path.slice(0, -4) }}@2x.webp 2x" type="image/webp">
+    <source srcset="{{ dist }}{{ path }} 1x, {{ dist }}{{ path.slice(0, -4) }}@2x{{ path.slice(-4) }} 2x">
+    <img src="{{ dist }}{{ path }}"{% if imgClass %} class="{{ imgClass }}"{% endif %}{% if alt %} alt="{{ alt }}"{% endif %}{% if lazyLoading === true %} loading="lazy"{% endif %}{% if lazySizes %} width="{{ lazySizes.w }}" height="{{ lazySizes.h }}"{% endif %}>
+  </picture>
+{% endmacro %}
+
+{% macro responsivePicture(path, dist = data.img, pictureClass = "", imgClass = "", alt = "", hasMobileImage = false, lazyLoading = false, lazySizes) %}
+  <picture{% if pictureClass %} class="{{ pictureClass }}"{% endif %}>
+    <source media="(min-width: 991.98px)" srcset="{{ dist }}{{ path.slice(0, -4) }}.webp 1x, {{ dist }}{{ path.slice(0, -4) }}@2x.webp 2x" type="image/webp">
+    <source media="(min-width: 991.98px)" srcset="{{ dist }}{{ path }} 1x, {{ dist }}{{ path.slice(0, -4) }}@2x{{ path.slice(-4) }} 2x">
+    {% if hasMobileImage === true %}
+      <source media="(max-width: 767.98px)" srcset="{{ dist }}{{ path.slice(0, -4) }}@mobile.webp" type="image/webp">
+      <source media="(max-width: 767.98px)" srcset="{{ dist }}{{ path.slice(0, -4) }}@mobile{{ path.slice(-4) }}" >
+    {% endif %}
+    <source srcset="{{ dist }}{{ path.slice(0, -4) }}.webp" type="image/webp">
+    <img src="{{ dist }}{{ path }}"{% if imgClass %} class="{{ imgClass }}"{% endif %}{% if alt %} alt="{{ alt }}"{% endif %}{% if lazyLoading === true %} loading="lazy"{% endif %}{% if lazySizes %} width="{{ lazySizes.w }}" height="{{ lazySizes.h }}"{% endif %}>
+  </picture>
+{% endmacro %}
+
+{% macro retinaPicture(path, dist = data.img, pictureClass = "", imgClass = "", alt = "", hasMobileImage = false, lazyLoading = false, lazySizes) %}
+  <picture{% if pictureClass %} class="{{ pictureClass }}"{% endif %}>
+    <source media="(min-width: 767.98px)" srcset="{{ dist }}{{ path.slice(0, -4) }}@2x.webp" type="image/webp">
+    <source media="(min-width: 767.98px)" srcset="{{ dist }}{{ path.slice(0, -4) }}@2x{{ path.slice(-4) }}">
+    {% if hasMobileImage === true %}
+      <source media="(max-width: 767.98px)" srcset="{{ dist }}{{ path.slice(0, -4) }}@mobile.webp" type="image/webp">
+      <source media="(max-width: 767.98px)" srcset="{{ dist }}{{ path.slice(0, -4) }}@mobile{{ path.slice(-4) }}" >
+    {% endif %}
+    <source srcset="{{ dist }}{{ path.slice(0, -4) }}.webp" type="image/webp">
+    <img src="{{ dist }}{{ path }}"{% if imgClass %} class="{{ imgClass }}"{% endif %}{% if alt %} alt="{{ alt }}"{% endif %}{% if lazyLoading === true %} loading="lazy"{% endif %}{% if lazySizes %} width="{{ lazySizes.w }}" height="{{ lazySizes.h }}"{% endif %}>
+  </picture>
+{% endmacro %}
