@@ -6,3 +6,4 @@
 /**/*.DS_Store
 /app/js/common.js
 /app/img/_dist/
+/app/*.html
