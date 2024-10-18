@@ -1,1 +1,8 @@
+/node_modules/
+/dist/public/
+/.git/
+/app/css/
+/**/Thumbs.db
 /**/*.DS_Store
+/app/js/common.js
+/app/img/_dist/
