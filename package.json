@@ -3,9 +3,19 @@
   "version": "1.0.0",
   "description": "Horizon Studio Frontend Project",
   "main": "index.js",
+  "engines": {
+    "node": ">=18 <21"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && node dist/server.js",
+    "dev": "gulp",
+    "build": "gulp build"
   },
   "author": "Svitlana Terentyeva",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.21.0",
+    "serve-static": "^1.16.2"
+  }
 }
