@@ -1,3 +1,22 @@
+{% set menu = [
+  {
+    name: 'About us',
+    href: '#about'
+  },
+  {
+    name: 'Artists',
+    href: '#artists'
+  },
+  {
+    name: 'Events',
+    href: '#events'
+  },
+  {
+    name: 'Location',
+    href: '#location'
+  }
+]%}
+
 <div class="main-header-outer js-main-header-outer">
   <header class="main-header js-main-header">
     <div class="main-header__container container">
@@ -10,34 +29,22 @@
         <nav class="main-header__menu main-menu js-main-menu">
           <div class="main-menu__inner container">
             <ul class="main-menu__list js-main-menu__list">
-              <li class="main-menu__item">
-                <a href="#" class="main-menu__link">
-                  Home
-                </a>
-              </li>
-              <li class="main-menu__item">
-                <a href="#" class="main-menu__link">
-                  Home
-                </a>
-              </li>
-              <li class="main-menu__item">
-                <a href="#" class="main-menu__link">
-                  Home
-                </a>
-              </li>
-              <li class="main-menu__item">
-                <a href="#" class="main-menu__link">
-                  Home
-                </a>
-              </li>
-              <li class="main-menu__item">
-                <a href="#" class="main-menu__link">
-                  Home
-                </a>
-              </li>
+              {% for menuItem in menu %}
+                <li class="main-menu__item">
+                  <a href="{{ menuItem.href }}" class="main-menu__link">
+                    {{ menuItem.name }}
+                  </a>
+                </li>
+              {% endfor %}
             </ul>
           </div>
         </nav>
+        <div class="main-header__phone">
+          <a href="tel:5551234567" class="main-header__phone-link">
+            <img src="{{ data.img }}/phone.svg" alt="Phone Icon" class="main-header__phone-icon">
+            <span class="main-header__phone-text">(555) 123-4567</span>
+          </a>
+        </div>
         <div class="main-header__menu-opener">
           <button class="menu-opener js-menu-opener">
             <span class="menu-opener__inner js-menu-opener__inner">
