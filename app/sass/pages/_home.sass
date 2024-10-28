@@ -1,0 +1,33 @@
+.hero
+  text-align: center
+  padding-top: calc(var(--main-header-height) + 300rem)
+  padding-bottom: 111rem
+  background-image: url(../img/_dist/hs-bg.jpg)
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  +r($lg)
+    padding-top: calc(var(--main-header-height) + 120rem)
+    padding-bottom: 120rem
+  &__logo
+    margin-bottom: 170rem
+    +r($lg)
+      margin-bottom: 80rem
+  &__logo-img
+    width: 582rem
+    max-width: 100%
+    height: auto
+    +r($lg)
+      width: 450rem
+    +r($sm)
+      width: 300rem
+  &__slogan
+    background-color: rgba(#000000, 0.59)
+    padding: 45rem 0
+    font-size: 40rem
+    line-height: 1.5
+    font-weight: 300
+    +r($lg)
+      font-size: 30rem
+      padding: 1em 0
+  
