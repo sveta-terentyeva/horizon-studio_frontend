@@ -5,8 +5,8 @@
 //   +r($md)
 //     --main-header-height: 64px
 
-// .main-header-outer
-//   min-height: var(--main-header-height)
+.main-header-outer
+  min-height: var(--main-header-height)
 
 :target
   // not works when anchor element has overflow hidden
@@ -45,6 +45,3 @@
       &__logo-img
         width: 100rem
         transition: 0.3s
-        // Edge (legacy) flickering fix
-        @supports (-ms-ime-align:auto)
-          transition: none
