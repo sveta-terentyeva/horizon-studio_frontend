@@ -33,6 +33,22 @@ body
   &:not(.loaded) *
     transition: none !important
 
+.container
+  width: 100%
+  margin: 0 auto
+  padding: 0 15px
+  +rmin($sm)
+    max-width: $sm-c
+  +rmin($md)
+    max-width: $md-c
+  +rmin($lg)
+    max-width: $lg-c
+  +rmin($xl)
+    max-width: $xl-c
+    padding: 0 30px
+  +rmin($xxl)
+    max-width: $xxl-c
+
 .no-scroll
   overflow: hidden
 
