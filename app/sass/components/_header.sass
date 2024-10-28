@@ -1,12 +1,9 @@
-// html
-//   --main-header-height: 174px
-//   +r($xl)
-//     --main-header-height: 110px
-//   +r($md)
-//     --main-header-height: 64px
-
-.main-header-outer
-  min-height: var(--main-header-height)
+html
+  --main-header-height: 98px
+  +r($lg)
+    --main-header-height: 80px
+  +r($md)
+    --main-header-height: 46px
 
 :target
   // not works when anchor element has overflow hidden
@@ -19,29 +16,51 @@
   left: 0
   top: 0
   width: 100%
-  background-color: #ffffff
-  padding: 30rem 0
+  background-color: rgba(0, 0, 0, 0.58)
+  color: $c-text
+  padding: 24rem 0
   transition-property: box-shadow
+  +r($lg)
+    padding: 15rem 0
+  +r($md)
+    padding: 5rem 0
   &__content
     display: flex
+    justify-content: space-between
     align-items: center
   &__logo,
   &__logo-img
-    width: 144px
-    +r($xxl)
-      width: 120px
-    +r($lg)
-      width: 114px
-  &__menu
-    margin-left: auto
+    width: 52px
+    height: auto
+    +r($md)
+      width: 32px
+  &__logo-link
+    &:hover
+      opacity: 0.75
+  &__aside
+    display: flex
+    align-items: center
+    gap: 15px
+  &__phone
+    font-size: 30rem
+    +r($xl)
+      font-size: 25rem
+  &__phone-link
+    display: flex
+    align-items: center
+    gap: 13rem
+    &:hover
+      opacity: 0.75
+  &__phone-icon
+    width: 1em
+    height: auto
+  &__phone-text
+    +r($sm)
+      display: none
   &__menu-opener
-    margin-left: auto
     +rmin($lg)
       display: none
   &.is-scrolled
     transition: 0.3s
     box-shadow: $box-shadow
-    .main-header
-      &__logo-img
-        width: 100rem
-        transition: 0.3s
+

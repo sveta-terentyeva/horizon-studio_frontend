@@ -1,14 +1,15 @@
 $mobile-breakpoint: $lg
 
 .main-menu
-  font-size: $default-font-size
+  font-size: 30rem
+  +r($xl)
+    font-size: 25rem
   +r($mobile-breakpoint)
     text-align: left
     padding: 0
     z-index: -1
     cursor: pointer
     top: 0
-    top: calc(var(--main-header-height) - 2px)
     bottom: 0
     left: 0
     right: 0
@@ -19,35 +20,78 @@ $mobile-breakpoint: $lg
     transform: scale3d(1, 0, 0)
     transform-origin: 0 0
     position: fixed
-    overflow: auto
-    -webkit-overflow-scrolling: touch
     +custom-scrollbar
     &.active
       transition: 0.3s all ease
       transform: none
-      padding-top: 3rem
-      background: #fff
+      background: url(../img/_dist/hs-bg.jpg)
+      background-size: cover
+      background-repeat: no-repeat
+      background-position: center center
   &__inner
+    position: relative
+    z-index: 1 
     display: flex
     align-items: center
     +rmin($mobile-breakpoint)
-      position: relative
       max-width: none
       padding: 0
     +r($mobile-breakpoint)
+      height: 100%
+      padding-top: var(--main-header-height)
       flex-direction: column
+      justify-content: center
+      align-items: center
+      text-align: center
+      &::before
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background: rgba($c-black, 0.6)
+  &__wrapper
+    +r($mobile-breakpoint)
+      width: 100%
       min-height: 100%
+      height: 100%
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      text-align: center
+      position: relative
+      z-index: 1
+      overflow: auto
+      -webkit-overflow-scrolling: touch
+      border-top: 2px solid rgba(#fff, 0.5) 
+  &__container
+    +r($mobile-breakpoint)
+      max-height: 100%
+      padding-top: 50px
+      padding-bottom: 50px
+
+  &__title
+    font-size: 25px
+    font-weight: 700
+    margin-bottom: 1.5em
+    +rmin($mobile-breakpoint)
+      display: none
   &__list
     display: flex
+    gap: 46rem
     align-items: center
     +r($mobile-breakpoint)
-      display: block
+      display: flex
+      flex-direction: column
+      gap: 30px
       width: 100%
       user-select: none
       z-index: 100
       list-style-type: none
       margin-left: 0
-      padding: 0 0 50rem
+      padding: 0
       visibility: hidden
       transform: scale3d(1, 0, 1)
       // vertical top start
@@ -58,12 +102,8 @@ $mobile-breakpoint: $lg
         transform: scale3d(1, 1, 1)
   &__item
     position: relative
-    margin-right: 32rem
-    +r($xl)
-      margin-right: 16rem
     +r($mobile-breakpoint)
       margin: 0
-      padding: 10px 0
     &:last-child
       margin-right: 0
     +r($mobile-breakpoint)
@@ -77,15 +117,12 @@ $mobile-breakpoint: $lg
     justify-content: center
     position: relative
     &:hover
-      color: $c-accent
-    &.active
-      color: $c-accent
+      opacity: 0.75
     +r($mobile-breakpoint)
       text-align: center
       height: auto
       width: 100%
       display: flex
-      padding: 1.15em 0
       &:hover
         color: $c-accent
 
@@ -110,12 +147,12 @@ $mobile-breakpoint: $lg
     z-index: 1002
     width: 100%
     height: 100%
-    padding: 23rem 0 23rem 21rem
+    padding: 23rem 0 23rem
     transition: 0.3s
   &__lines
     display: block
     position: relative
-    width: 23rem
+    width: 26px
     height: 2px
     background-color: var(--color)
     border-radius: 9px
@@ -132,10 +169,6 @@ $mobile-breakpoint: $lg
       border-radius: 9px
       transition: 0.3s
     &::before
-      transform: translateY(-8px)
-      +r($md)
-        transform: translateY(-6px)
+      transform: translateY(-7px)
     &::after
-      transform: translateY(8px)
-      +r($md)
-        transform: translateY(6px)
+      transform: translateY(7px)
