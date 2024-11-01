@@ -36,4 +36,52 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
     </div>
   </section>
   <!-- /About Section -->
+
+  <!-- Artists Section -->
+  {% set artists = [
+    {
+      name: 'Liam Crawford',
+      text: 'A visionary painter whose abstract landscapes evoke the beauty of nature and the complexity of human emotion. ',
+      slogan: 'I paint not what I see, but what I feel.',
+      photo: '/artist-1.png' 
+    },
+    {
+      name: 'Isabella Laurent',
+      text: 'Known for her delicate, yet powerful portraits, Isabella captures the essence of her subjects with an ethereal touch.',
+      slogan: 'Every face tells a story; my goal is to listen and translate it into art.',
+      photo: '/artist-2.png' 
+    },
+    {
+      name: 'Mateo Santos',
+      text: "A sculptor inspired by modern architecture and organic forms, Mateo's work bridges the gap between structure and fluidity.",
+      slogan: 'Art is where geometry meets the heart.',
+      photo: '/artist-3.png' 
+    }
+  ]%}
+  <section class="artists-section">
+    <div class="artists-section__container container">
+      <h2 class="artists-section__title h2 align-center">
+        Our Artists
+      </h2>
+      <div class="artists-section__set artists-set">
+        {% for item in artists %}
+        <div class="artists-set__col">
+          <div class="artists-set__item artist-item">
+            <h3 class="artist-item__title h4">{{ item.name }}</h3>
+            <div class="artist-item__text">
+              {{ item.text }}
+            </div>
+            <div class="artist-item__slogan">
+              {{ item.slogan }}
+            </div>
+            <div class="artist-item__photo">
+               {{ mixins.webpPicture(path = item.photo, pictureClass = "artist-item__photo-pic", imgClass = "artist-item__photo-img", alt=item.name + " Photo", lazyLoading = true, lazySizes = {w: 420, h: 504}) }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- /Artists Section -->
 {% endblock %}

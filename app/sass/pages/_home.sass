@@ -68,3 +68,93 @@
       margin-bottom: 45rem
       +r($md)
         margin-bottom: 10px
+
+.artists-section
+  padding: 80rem 0
+  position: relative
+  background-image: url(../img/_dist/hs-bg.jpg)
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  overflow: hidden
+  +r($md)
+    padding: 25px 0 30px
+  +r($sm)
+    padding: 25px 0 0
+  &::before
+    content: ""
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background-color: rgba(0, 0, 0, 0.5)
+  &__container
+    position: relative
+    z-index: 1
+  &__title
+    margin-bottom: 45rem
+    +r($md)
+      margin-bottom: 30px
+
+.artists-set
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 40px
+  +r($xl)
+    grid-template-columns: 1fr
+    max-width: 475rem
+    margin: 0 auto
+    gap: 60px
+  +r($md)
+    gap: 80px
+  &__col
+    height: 100%
+  &__item
+    height: 100%
+
+.artist-item
+  display: flex
+  flex-direction: column
+  &__title
+    margin-bottom: 15px
+    +r($xxl)
+      font-size: 40rem
+    +r($md)
+      font-size: 30px
+  &__text
+    font-size: 26rem
+    margin-bottom: 0.5em
+    font-weight: 300
+    +r($xxl)
+      font-size: 23rem
+    +r($md)
+      font-size: 16px
+      margin-bottom: 1.5em
+  &__slogan
+    position: relative
+    z-index: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: $secondary-font
+    font-size: 24rem
+    line-height: 1.6
+    background-color: rgba(0, 0, 0, 0.59)
+    min-height: 3.7em
+    padding: 0.25em 0.5em
+    margin-bottom: -1.85em
+    text-align: center
+    +r($xxl)
+      font-size: 21rem
+    +r($md)
+      font-size: 16px
+    +r($sm)
+      margin-right: -15px
+  &__photo
+    margin-top: auto
+    +r($sm)
+      margin-right: -15px
+  &__photo-img
+    width: 100%
+    height: auto
