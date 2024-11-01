@@ -5,9 +5,11 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
 {% extends "layouts/_layout.njk" %}
 
 {% block content %}
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero__container container">
       <div class="hero__logo">
+        <h1 class="visually-hidden">Horizon Studio</h1>
         <img src="{{ data.img }}/logo-large.svg" alt="Horizon Studio Full Logo" class="hero__logo-img">
       </div>
     </div>
@@ -17,4 +19,21 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
       </div>
     </div>
   </section>
+  <!-- /Hero Section -->
+
+  <!-- About Section -->
+  <section class="about">
+    <div class="about__photo">
+      <img src="{{ data.img }}/logo-large.svg" alt="Horizon Studio Logo" class="about__photo-logo" width="272" height="72">
+      {{ mixins.webpPicture(path = "/about-photo.jpg", pictureClass = "about__photo-pic", imgClass = "about__photo-img", alt="Horizon Studio Photo", lazyLoading = true, lazySizes = {w: 1444, h: 409}) }}
+    </div>
+    <div class="about__container container">
+      <div class="about__content">
+        <h2 class="h2">About Us</h2>
+        <p>Horizon Studio is a place where art meets the soul. We’ve created a space for artists to express their visions and for visitors to immerse themselves in beauty, emotion, and creativity. Our mission is to discover and support artists from around the globe.</p>
+        <p>At Horizon Studio, art is about more than just what you see—it's what you feel. Each piece tells a story, and we curate exhibitions that reflect diverse voices and perspectives. We provide a platform for both emerging and established artists, offering exhibitions, workshops, and talks that inspire and connect our community.</p>
+      </div>
+    </div>
+  </section>
+  <!-- /About Section -->
 {% endblock %}

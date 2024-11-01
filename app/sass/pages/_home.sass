@@ -30,4 +30,41 @@
     +r($lg)
       font-size: 30rem
       padding: 1em 0
-  
+
+.about
+  padding-top: 146rem
+  padding-bottom: 120rem
+  +r($md)
+    padding-top: 55px
+    padding-bottom: 50px
+  &__photo
+    position: relative
+    width: 100%
+  &__photo-logo
+    position: absolute
+    height: auto
+    top: 0
+    left: 50%
+    transform: translate(-50%, -50%)
+    +r($md)
+      width: 123px
+      left: 0
+      transform: translate(20px, -50%)
+  &__photo-img
+    display: block
+    width: 100%
+    height: auto
+  &__content
+    padding-top: 50rem
+    font-size: 25rem
+    line-height: 1.6
+    font-weight: 300
+    +r($md)
+      text-align: center
+      font-size: 16px
+      padding-top: 35px
+    .h2
+      text-align: center
+      margin-bottom: 45rem
+      +r($md)
+        margin-bottom: 10px
