@@ -1,15 +1,5 @@
-// html
-//   --main-header-height: 174px
-//   +r($xl)
-//     --main-header-height: 110px
-//   +r($md)
-//     --main-header-height: 64px
-
-// .main-header-outer
-//   min-height: var(--main-header-height)
-
 :target
-  // not works when anchor element has overflow hidden
+  // doesn't work when anchor element has overflow hidden
   scroll-margin-top: var(--main-header-height)
 
 .main-header
@@ -19,23 +9,20 @@
   left: 0
   top: 0
   width: 100%
-  background-color: #ffffff
+  background-color: rgba(0, 0, 0, 0.58)
   padding: 30rem 0
   transition-property: box-shadow
   &__content
     display: flex
     align-items: center
+    justify-content: space-between
+
   &__logo,
   &__logo-img
-    width: 144px
-    +r($xxl)
-      width: 120px
-    +r($lg)
-      width: 114px
+    width: 52rem
   &__menu
-    margin-left: auto
+    margin-left: 40px
   &__menu-opener
-    margin-left: auto
     +rmin($lg)
       display: none
   &.is-scrolled
@@ -45,6 +32,3 @@
       &__logo-img
         width: 100rem
         transition: 0.3s
-        // Edge (legacy) flickering fix
-        @supports (-ms-ime-align:auto)
-          transition: none
