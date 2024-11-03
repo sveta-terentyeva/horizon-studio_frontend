@@ -6,35 +6,64 @@
   display: block
   width: 100%
   max-width: 100%
-  padding: 17rem 20rem
-  border: 1px solid $c-border
+  padding: 4px 17rem
+  border: 2px solid $c-border
   border-radius: 0
-  background: transparent
+  background: #fff
   font-size: $default-font-size
   font-weight: 400
   line-height: 1.5
   text-overflow: ellipsis
-  color: $c-text
+  color: #000
   caret-color: currentColor
   box-shadow: none
   transition: $trs-dur
+  &::selection
+    background-color: #000
+    color: #fff
   &:focus
     outline: 0
-    border-color: $c-accent
-  // hide placeholder on focus
-  // &:focus::placeholder
-  // opacity: 0
-  // transition: opacity 0.3s ease
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover, 
-  &:-webkit-autofill:focus, 
-  &:-webkit-autofill:active  
-    transition: background-color 5000s ease-in-out 0s
-    -webkit-text-fill-color: currentColor
-    caret-color: currentColor
-  &_style_line
-    border: 2px solid $c-border
-    border-width: 0 0 2px
-    padding: 8rem 0 6rem
+    border-color: #999
   &.error
     border-color: $c-red
+
+.label
+  display: block
+  &__title
+    display: block
+    font-size: 25rem
+    margin-bottom: 0.4em
+    +r($md)
+      font-size: 16px
+
+.fields-set
+  display: flex
+  flex-direction: column
+  gap: 29rem
+
+.form
+  &__title
+    font-size: 40rem
+    margin-bottom: 0.6em
+    +r($md)
+      text-align: left
+      padding-right: 60rem
+      margin-top: -58px
+  &__footer
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-wrap: wrap
+    gap: 25px
+    padding-top: 40px
+    +r($sm)
+      flex-direction: column
+  &__submit
+    min-width: 7.25em
+    +r($sm)
+      min-width: 142px
+  &__footnote
+    font-family: $secondary-font
+    font-size: 20px
+    max-width: 10.8em
+    text-align: center

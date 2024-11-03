@@ -126,7 +126,7 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
               </p>
             </div>
             <div class="event-item__actions align-center">
-              <a href="#" class="event-item__actions-btn button">Buy Tickets</a>
+              <a href="#" class="event-item__actions-btn button js-modal-opener" data-modal-id="tickets-form" data-form-name="Tickets for {{ item.title }}">Buy Tickets</a>
             </div>
             <div class="event-item__photo">
               {{ mixins.webpPicture(path = item.photo, pictureClass = "event-item__photo-pic", imgClass = "event-item__photo-img", alt=item.title + " Photo", lazyLoading = true, lazySizes = {w: 651, h: 287}) }}
@@ -172,6 +172,10 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
     </div>
   </section>
   <!-- /Location Section --> 
+{% endblock %}
+
+{% block modals %}
+  {% include "partials/_tickets-form.njk" %}
 {% endblock %}
 
 {% block scripts %}

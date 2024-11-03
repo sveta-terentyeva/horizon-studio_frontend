@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (modalOpener !== null) {
       e.preventDefault();
       const modalId = modalOpener.dataset.modalId;
-      openModal(modalId);
+      const formName = modalOpener.dataset.formName;
+      openModal(modalId, formName);
     }
   });
 
@@ -38,11 +39,16 @@ export const closeModals = () => {
   }
 }
 
-export const openModal = (id) => {
+export const openModal = (id, formName) => {
   closeModals();
   const modal = document.querySelector(`.js-modal[data-modal-id=${id}`);
-  if (modal !== null) {
-    document.body.classList.add('no-scroll');
-    modal.classList.add('modal_active');
+  if (modal === null) {
+    return;
+  }
+  document.body.classList.add('no-scroll');
+  modal.classList.add('modal_active');
+  const hiddenInput = modal.querySelector('input.js-form-name');
+  if (hiddenInput !== null) {
+    hiddenInput.value = formName;
   }
 }

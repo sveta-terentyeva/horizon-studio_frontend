@@ -7,24 +7,16 @@
   width: 100%
   height: 100%
   overflow-y: auto
-  background: rgba($c-text, 0.5)
+  background: rgba($c-gray, 0.75)
   transition: $trs-dur
   transition-property: opacity
   opacity: 0
   z-index: 1010
   visibility: hidden
   padding: 15px 15px 0 15px
+  +custom-scrollbar
   +r($md)
     padding: 0
-  +custom-scrollbar
-  // &_indent_header
-  //   +rmin($md)
-  //     // CSS vars fallback
-  //     top: 0
-  //     height: 100%
-  //     top: var(--main-header-height)
-  //     z-index: 900
-  //     height: calc(100% - var(--main-header-height))
   &:not(.modal_active)
     .button,
     button,
@@ -55,8 +47,8 @@
     position: relative
     display: flex
     flex-direction: column
-    margin: auto
-    background-color: #ffffff
+    margin: 0 auto
+    background-color: #0C0000
     transition: $trs-dur
     transform: translateY(50px)
     max-width: 100%
@@ -64,35 +56,38 @@
 .default-modal
   display: flex
   flex-direction: column
-  background-color: #ffffff
-  width: 790px
+  width: 707px
   max-width: 100%
   +r($md)
     width: 100%
     flex: 1
-    border-radius: 0
   &__box
-    padding: 40rem
-    margin: auto
-    +r($md)
-      padding: 50rem 15rem
-  &__header
     display: flex
-    align-items: center
-  &__title
-    margin-bottom: 15rem
+    width: 100%
+    flex-direction: column
+    padding: 30rem 25rem 75rem
+    margin: 0 auto
+  &__close-wrapper
+    +r($md)
+      max-width: 513px
+      width: 100%
+      margin: 0 auto
+      padding-right: 20px
+
   &__close
+    position: relative
+    z-index: 1
     display: block
-    margin: 20rem 20rem 20rem auto
-    color: $c-text
+    margin: 30rem 25rem 10rem auto
+    +r($md)
+      margin-right: 0
+    
+      
     &:hover
-      color: $c-red
+      opacity: 0.75
   &__close-icon
     font-size: 25px
-  &__actions
-    margin-top: 45rem
-    margin-right: -15rem
-    margin-bottom: -15rem
-  &__actions-btn
-    margin-right: 15rem
-    margin-bottom: 15rem
+  &__form
+    max-width: 473px
+    width: 100%
+    margin: 0 auto
