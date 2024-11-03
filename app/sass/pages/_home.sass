@@ -161,6 +161,8 @@
 
 .events
   padding: 70rem 0 80rem
+  +r($xl)
+    padding-bottom: 130rem
   +r($md)
     padding: 30px 0 40px
   &__title
@@ -220,9 +222,79 @@
     bottom: 0
     left: 50%
     transform: translate(-50%, 50%)
-    width: 300px
+    width: 300rem
     height: auto
     +r($md)
       width: 123px
     +rmin($xl)
       display: none
+
+.location
+  padding: 80rem 0 90rem
+  position: relative
+  background-image: url(../img/_dist/hs-bg.jpg)
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  +r($md)
+    padding: 40px 0 50px
+  &::before
+    content: ""
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background-color: rgba(0, 0, 0, 0.5)
+  &__container
+    position: relative
+    z-index: 1
+  &__title
+    margin-bottom: 39rem
+    +r($md)
+      margin-bottom: 18px
+  &__grid
+    display: grid
+    grid-template-columns: 600fr 650fr
+    gap: 90px
+    +r($xxl)
+      gap: 50px
+    +r($md)
+      grid-template-columns: 1fr
+    +r($md)
+      gap: 30px
+  &__descr
+    padding-top: 69rem
+    font-size: 30rem
+    font-weight: 300
+    +r($xxl)
+      padding-top: 30rem
+    +r($xl)
+      padding-top: 0
+    +r($md)
+      order: 2
+      font-size: 20px
+    +r($sm)
+      font-size: 13px
+    p + p
+      margin-top: 79rem
+      +r($xxl)
+        margin-top: 40rem
+      +r($md)
+        margin-top: 1em
+  &__map-el
+    width: 100%
+    aspect-ratio: 650/583
+    background-color: $c-gray
+    +r($md)
+      aspect-ratio: 280/164
+  &__map-text
+    max-width: 500px
+    font-size: 25rem
+    font-weight: 700
+    text-align: center
+    margin: 0.5em auto 0
+    +r($md)
+      font-size: 20px
+    +r($sm)
+      font-size: 13px
