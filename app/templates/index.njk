@@ -28,7 +28,7 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
       {{ mixins.webpPicture(path = "/about-photo.jpg", pictureClass = "about__photo-pic", imgClass = "about__photo-img", alt="Horizon Studio Photo", lazyLoading = true, lazySizes = {w: 1444, h: 409}) }}
     </div>
     <div class="about__container container">
-      <div class="about__content">
+      <div class="about__content" id="about">
         <h2 class="h2">About Us</h2>
         <p>Horizon Studio is a place where art meets the soul. We’ve created a space for artists to express their visions and for visitors to immerse themselves in beauty, emotion, and creativity. Our mission is to discover and support artists from around the globe.</p>
         <p>At Horizon Studio, art is about more than just what you see—it's what you feel. Each piece tells a story, and we curate exhibitions that reflect diverse voices and perspectives. We provide a platform for both emerging and established artists, offering exhibitions, workshops, and talks that inspire and connect our community.</p>
@@ -58,7 +58,7 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
       photo: '/artist-3.png' 
     }
   ]%}
-  <section class="artists-section">
+  <section class="artists-section" id="artists">
     <div class="artists-section__container container">
       <h2 class="artists-section__title h2 align-center">
         Our Artists
@@ -102,7 +102,7 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
       photo: '/event-2.jpg'
     }
   ]%}
-  <section class="events">
+  <section class="events" id="events">
     <div class="events__container container">
       <h2 class="events__title h2 align-center">
         Events
@@ -140,7 +140,7 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
   <!-- /Events Section -->
 
   <!-- Location Section -->
-  <section class="location">
+  <section class="location" id="location">
     <div class="location__container container">
       <h2 class="location__title h2 align-center">Location</h2>
       <div class="location__grid">
