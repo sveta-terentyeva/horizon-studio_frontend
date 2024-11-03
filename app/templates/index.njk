@@ -65,20 +65,20 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
       </h2>
       <div class="artists-section__set artists-set">
         {% for item in artists %}
-        <div class="artists-set__col">
-          <div class="artists-set__item artist-item">
-            <h3 class="artist-item__title h4">{{ item.name }}</h3>
-            <div class="artist-item__text">
-              {{ item.text }}
-            </div>
-            <div class="artist-item__slogan">
-              {{ item.slogan }}
-            </div>
-            <div class="artist-item__photo">
-               {{ mixins.webpPicture(path = item.photo, pictureClass = "artist-item__photo-pic", imgClass = "artist-item__photo-img", alt=item.name + " Photo", lazyLoading = true, lazySizes = {w: 420, h: 504}) }}
+          <div class="artists-set__col">
+            <div class="artists-set__item artist-item">
+              <h3 class="artist-item__title h4">{{ item.name }}</h3>
+              <div class="artist-item__text">
+                {{ item.text }}
+              </div>
+              <div class="artist-item__slogan">
+                {{ item.slogan }}
+              </div>
+              <div class="artist-item__photo">
+                {{ mixins.webpPicture(path = item.photo, pictureClass = "artist-item__photo-pic", imgClass = "artist-item__photo-img", alt=item.name + " Photo", lazyLoading = true, lazySizes = {w: 420, h: 504}) }}
+              </div>
             </div>
           </div>
-        </div>
         {% endfor %}
       </div>
     </div>
@@ -155,7 +155,11 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
             Sunday: Closed
           </p>
           <p>
-            For any inquiries about our location or directions, please contact us at <a href="mailto:horizonstudio@gmail.com"><strong>horizonstudio@gmail.com</strong></a> or call <a href="tel:5551234567"><strong>(555)&nbsp;123&#8209;4567</strong></a>.
+            For any inquiries about our location or directions, please contact us at <a href="mailto:horizonstudio@gmail.com">
+              <strong>horizonstudio@gmail.com</strong>
+            </a> or call <a href="tel:5551234567">
+              <strong>(555)&nbsp;123&#8209;4567</strong>
+            </a>.
           </p>
         </div>
         <div class="location__map">
@@ -168,4 +172,14 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
     </div>
   </section>
   <!-- /Location Section -->
+
+  
+{% endblock %}
+
+{% block scripts %}
+    <!-- The API key domains are restricted for security reasons. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB085BXVxbkkOmvRbyq72Ce9F3deBcLF28"
+      defer
+    ></script>
 {% endblock %}

@@ -6,3 +6,4 @@ import './_adjust-focus-outlines';
 import './_calc-vh';
 import './_footer';
 import './_forms';
+import './_location-map';
