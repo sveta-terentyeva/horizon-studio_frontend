@@ -5,6 +5,7 @@ html
   line-height: $line-height
   font-size: $rem
   --main-header-height: 0px
+  scroll-behavior: smooth
   +r($lg)
     font-size: $rem-mobile
 
@@ -24,6 +25,8 @@ body
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  @media screen and (prefers-reduced-motion: reduce)
+    scroll-behavior: auto
   &:not(.show-focus-outlines)
     a,
     button,
