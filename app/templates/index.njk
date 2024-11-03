@@ -84,4 +84,58 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
     </div>
   </section>
   <!-- /Artists Section -->
+
+  <!-- Events Section -->
+  {% set events = [
+    {
+      title: 'Contemporary Visions Exhibition',
+      date: 'October 15 – November 1, 2024',
+      location: 'Horizon Studio, Main Gallery',
+      description: 'A collection of works by emerging contemporary artists exploring modern identity and global issues through various mediums.',
+      photo: '/event-1.jpg'
+    },
+    {
+      title: 'Echoes of the Earth Exhibition',
+      date: 'December 1 – December 15, 2024',
+      location: 'Horizon Studio, Main Gallery',
+      description: 'A captivating showcase of artists reflecting on environmental themes and sustainability through innovative  art pieces.',
+      photo: '/event-2.jpg'
+    }
+  ]%}
+  <section class="events">
+    <div class="events__container container">
+      <h2 class="events__title h2 align-center">
+        Events
+      </h2>
+      <div class="events__set events-set">
+        {% for item in events %}
+          <div class="events-set__item event-item">
+            <div class="event-item__content">
+              <h3 class="h3">{{ item.title }}</h3>
+              <p>
+                <strong>Date:</strong>
+                {{ item.date }}
+              </p>
+              <p>
+                <strong>Location:</strong>
+                {{ item.location }}
+              </p>
+              <p>
+                <strong>Description:</strong>
+                {{ item.description}}
+              </p>
+            </div>
+            <div class="event-item__actions align-center">
+              <a href="#" class="event-item__actions-btn button">Buy Tickets</a>
+            </div>
+            <div class="event-item__photo">
+              {{ mixins.webpPicture(path = item.photo, pictureClass = "event-item__photo-pic", imgClass = "event-item__photo-img", alt=item.title + " Photo", lazyLoading = true, lazySizes = {w: 651, h: 287}) }}
+              <img src="{{ data.img }}/logo-large.svg" alt="Horizon Studio Logo" class="event-item__logo" width="123" height="54">
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- /Events Section -->
 {% endblock %}

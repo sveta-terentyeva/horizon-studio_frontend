@@ -18,30 +18,24 @@ button
   max-width: 100%
   text-align: center
   transition: $trs-dur
-  padding: 11px 15px 12px
+  padding: 0.66em 1.4em
   font-family: $default-font
-  font-size: 16rem
+  font-size: 25rem
   font-weight: 700
   line-height: 1.2
   text-decoration: none
-  color: #ffffff
+  color: $c-black
   background: $c-accent
-  border: 1px solid $c-accent
-  border-radius: 0
+  border-radius: 99px
+  +r($md)
+    font-size: 15px
   &:hover
-    background-color: $c-accent-hover
-    border-color: $c-accent-hover
+    opacity: 0.75
     outline: 0
-    color: #fff
-    .button__arrow
-      transform: translateX(0.25em)
   &:active
-    background-color: $c-accent-active
-    border-color: $c-accent-active
-    color: #fff
+    opacity: 0.9
   &[disabled]
     background-color: $c-disabled
-    border-color: $c-disabled-text
     color: $c-disabled-text
     pointer-events: none
     cursor: default
@@ -72,30 +66,6 @@ button
       margin-left: 2em
     + .button__icon
       margin-left: 1em
-  &__arrow-outer
-    position: relative
-    display: inline-block
-    &::before
-      content: ""
-      position: absolute
-      top: 50%
-      left: -1em
-      transform: translateY(-50%)
-      width: 1px
-      height: 1.5em
-      opacity: 0.2
-      +r($md)
-        height: 2.4167em
-  &__arrow
-    display: block
-    transition: transform 0.3s
-    font-size: 1.5em
-    min-width: 1em
-    position: relative
-    +r($md)
-      font-size: 2em
-  &__arrow-img
-    +centerer()
   &__loader
     display: none
     min-width: 1em
@@ -103,22 +73,3 @@ button
     margin-left: 1.35em
   &__loader-inner
     +centerer()
-  &_bg_red
-    background-color: $c-red
-    border-color: $c-red
-
-  &_type_ghost
-    background: transparent
-    border-color: $c-accent
-    color: $c-accent
-    &:hover
-      background-color: $c-accent
-      border-color: $c-accent
-
-  &_size_small
-    padding: 10px
-  &_size_large
-    padding: 24px 24px 23px 32px
-    .button__arrow-outer::before
-      +rmin($md)
-        height: 3em
