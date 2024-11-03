@@ -1,13 +1,32 @@
+{% set social = [
+  {
+    icon: '/inst.svg',
+    href: 'https://www.instagram.com/'
+  },
+  {
+    icon: '/fb.svg',
+    href: 'https://www.facebook.com/'
+  }
+]%}
+
 <footer class="main-footer js-main-footer">
   <div class="main-footer__container container">
     <div class="main-footer__content">
+      <div class="main-footer__social">
+        <div class="main-footer__social-title">You can also find us here:</div>
+        <div class="main-footer__social-links social">
+          {% for item in social %}
+            <a href="{{ item.href }}" class="social__link" target="_blank">
+              <img src="{{ data.img }}{{ item.icon }}" class="social__icon" alt="Social Icon" width="25" height="25" loading="lazy">
+            </a>
+          {% endfor %}
+        </div>
+      </div>
       <div class="main-footer__logo">
         <a href="/" class="main-footer__logo-link">
-          <img src="{{ data.img }}/logo.svg" class="main-footer__logo-img" alt="Logo">
+          <img src="{{ data.img }}/logo-large.svg" class="main-footer__logo-img" alt="Horizon Studio Logo" width="254" height="66">
         </a>
       </div>
-
-      <span class="js-main-footer__copy-year"></span>
     </div>
   </div>
 </footer>
