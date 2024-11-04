@@ -131,8 +131,6 @@ gulp.task("removedist", function () {
 });
 
 gulp.task("buildFiles", function () {
-  const robots = gulp.src("app/robots.txt").pipe(gulp.dest("dist/public"));
-
   const html = gulp.src(["app/*.html"]).pipe(gulp.dest("dist/public"));
 
   const css = gulp
@@ -149,7 +147,7 @@ gulp.task("buildFiles", function () {
 
   const video = gulp.src(["app/video/*"]).pipe(gulp.dest("dist/public/video"));
 
-  return merge(robots, html, css, fonts, js, images, video);
+  return merge(html, css, fonts, js, images, video);
 });
 
 function renderHtml(onlyChanged) {
