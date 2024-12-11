@@ -1,0 +1,26 @@
+{
+  "exhibitions": [
+    {
+      "id": 1,
+      "title": "Contemporary Visions Exhibition",
+      "date": "October 15 – November 1, 2024",
+      "location": "Horizon Studio, Main Gallery",
+      "description": "A collection of works by emerging contemporary artists exploring modern identity and global issues through various mediums.",
+      "photo": {
+        "jpg": "img/_dist/event-1.jpg",
+        "webp": "img/_dist/event-1.webp"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Echoes of the Earth Exhibition",
+      "date": " December 1 – December 15, 2024",
+      "location": "Horizon Studio, Main Gallery",
+      "description": "A captivating showcase of artists reflecting on environmental themes and sustainability through innovative  art pieces.",
+      "photo": {
+        "jpg": "img/_dist/event-2.jpg",
+        "webp": "img/_dist/event-2.webp"
+      }
+    }
+  ]
+}
