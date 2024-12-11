@@ -1,1 +1,1 @@
-web: node node_modules/gulp/bin/gulp build; cd dist; node server.js
+web: node node_modules/gulp/bin/gulp build; cd dist; node server.mjs
