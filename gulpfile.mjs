@@ -20,6 +20,7 @@ import sharp from "gulp-sharp-optimize-images";
 import gulpCache from "gulp-cache";
 import svgo from "gulp-svgmin";
 import merge from "merge-stream";
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 const cssPreprocessor = "sass"; // Syntax: sass or scss
 const fileswatch = "txt,json,md,woff,woff2"; // List of files extensions for watching & hard reload (comma separated)
@@ -28,6 +29,10 @@ gulp.task("browser-sync", function () {
   browserSync({
     server: {
       baseDir: "app",
+      middleware: [
+        // Proxy API requests to the API server
+        createProxyMiddleware({ target: 'http://localhost:9999', changeOrigin: true, pathFilter: '/api' })
+      ]
     },
     notify: false,
     open: false,
@@ -147,7 +152,9 @@ gulp.task("buildFiles", function () {
 
   const video = gulp.src(["app/video/*"]).pipe(gulp.dest("dist/public/video"));
 
-  return merge(html, css, fonts, js, images, video);
+  const jsonData = gulp.src(["app/data/*"]).pipe(gulp.dest("dist/public/data"));
+
+  return merge(html, css, fonts, js, images, video, jsonData);
 });
 
 function renderHtml(onlyChanged) {

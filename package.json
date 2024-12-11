@@ -7,8 +7,8 @@
     "node": ">=18 <21"
   },
   "scripts": {
-    "start": "npm run build && node dist/server.js",
-    "dev": "gulp",
+    "start": "npm run build && node dist/server.mjs",
+    "dev": "concurrently \"node app/jsonServer.mjs\" \"gulp\"",
     "build": "gulp build"
   },
   "author": "Svitlana Terentyeva",
@@ -38,6 +38,7 @@
     "gulp-sharp-optimize-images": "^4.0.3",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-svgmin": "^4.1.0",
+    "http-proxy-middleware": "^3.0.3",
     "merge-stream": "^2.0.0",
     "rimraf": "^5.0.9",
     "sass": "1.77.6",
@@ -47,6 +48,7 @@
   },
   "dependencies": {
     "compression": "^1.7.4",
+    "concurrently": "^9.1.0",
     "express": "^4.21.0",
     "serve-static": "^1.16.2"
   }

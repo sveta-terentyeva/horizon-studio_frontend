@@ -86,55 +86,64 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
   <!-- /Artists Section -->
 
   <!-- Events Section -->
-  {% set events = [
-    {
-      title: 'Contemporary Visions Exhibition',
-      date: 'October 15 – November 1, 2024',
-      location: 'Horizon Studio, Main Gallery',
-      description: 'A collection of works by emerging contemporary artists exploring modern identity and global issues through various mediums.',
-      photo: '/event-1.jpg'
-    },
-    {
-      title: 'Echoes of the Earth Exhibition',
-      date: 'December 1 – December 15, 2024',
-      location: 'Horizon Studio, Main Gallery',
-      description: 'A captivating showcase of artists reflecting on environmental themes and sustainability through innovative  art pieces.',
-      photo: '/event-2.jpg'
-    }
-  ]%}
   <section class="events" id="events">
     <div class="events__container container">
       <h2 class="events__title h2 align-center">
         Events
       </h2>
-      <div class="events__set events-set">
-        {% for item in events %}
-          <div class="events-set__item event-item">
-            <div class="event-item__content">
-              <h3 class="h3">{{ item.title }}</h3>
-              <p>
-                <strong>Date:</strong>
-                {{ item.date }}
-              </p>
-              <p>
-                <strong>Location:</strong>
-                {{ item.location }}
-              </p>
-              <p>
-                <strong>Description:</strong>
-                {{ item.description}}
-              </p>
-            </div>
-            <div class="event-item__actions align-center">
-              <a href="#" class="event-item__actions-btn button js-modal-opener" data-modal-id="tickets-form" data-form-name="Tickets for {{ item.title }}">Buy Tickets</a>
-            </div>
-            <div class="event-item__photo">
-              {{ mixins.webpPicture(path = item.photo, pictureClass = "event-item__photo-pic", imgClass = "event-item__photo-img", alt=item.title + " Photo", lazyLoading = true, lazySizes = {w: 651, h: 287}) }}
-              <img src="{{ data.img }}/logo-large.svg" alt="Horizon Studio Logo" class="event-item__logo" width="123" height="54">
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+      <div class="events__set events-set js-events-container"></div>
+
+      <script>
+        // Function to fetch and render exhibitions using async/await
+        async function fetchAndRenderExhibitions() {
+          try {
+            // Fetch data from the API endpoint
+            const response = await fetch('/api/exhibitions');
+            const data = await response.json(); // Parse the JSON response
+
+            const eventsContainer = document.querySelector('.js-events-container'); // Get the container for events
+
+            // Loop through each exhibition and create its HTML structure
+            data
+              .exhibitions
+              .forEach(exhibition => {
+                const eventItem = document.createElement('div'); // Create a new div for each exhibition
+                eventItem
+                  .classList
+                  .add('events-set__item', 'event-item'); // Add appropriate classes to the div
+
+                // Set the inner HTML content for the exhibition
+                eventItem.innerHTML = `
+                  <div class="event-item__content">
+                    <h3 class="h3">${exhibition.title}</h3>
+                    <p><strong>Date:</strong> ${exhibition.date}</p>
+                    <p><strong>Location:</strong> ${exhibition.location}</p>
+                    <p><strong>Description:</strong> ${exhibition.description}</p>
+                  </div>
+                  <div class="event-item__actions align-center">
+                    <a href="#" class="event-item__actions-btn button js-modal-opener" data-modal-id="tickets-form" data-form-name="Tickets for ${exhibition.title}">Buy Tickets</a>
+                  </div>
+                  <div class="event-item__photo">
+                    <picture class="event-item__photo-pic">
+                      <source srcset="${exhibition.photo.webp}" type="image/webp">  <!-- WebP image source -->
+                      <source srcset="${exhibition.photo.jpg}">  <!-- JPG image source -->
+                      <img src="${exhibition.photo.jpg}" class="event-item__photo-img" alt="${exhibition.title} Photo" loading="lazy" width="651" height="287">  <!-- Fallback image for browsers that don't support WebP -->
+                    </picture>
+                    <img src="img/_dist/logo-large.svg" alt="Horizon Studio Logo" class="event-item__logo" width="123" height="54">
+                  </div>
+                `;
+
+                // Append the created event item to the container
+                eventsContainer.appendChild(eventItem);
+              });
+          } catch (error) {
+            console.error('Error fetching exhibitions:', error); // Log any error that occurs
+          }
+        }
+
+        // Call the function to fetch and render exhibitions
+        fetchAndRenderExhibitions();
+      </script>
     </div>
   </section>
   <!-- /Events Section -->
@@ -171,7 +180,7 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
       </div>
     </div>
   </section>
-  <!-- /Location Section --> 
+  <!-- /Location Section -->
 {% endblock %}
 
 {% block modals %}
@@ -179,8 +188,8 @@ description: Horizon Studio. Where creativity meets craftsmanship. Discover uniq
 {% endblock %}
 
 {% block scripts %}
-    <!-- The API key domains are restricted for security reasons. -->
-    <script
+  <!-- The API key domains are restricted for security reasons. -->
+  <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB085BXVxbkkOmvRbyq72Ce9F3deBcLF28"
       defer
     ></script>

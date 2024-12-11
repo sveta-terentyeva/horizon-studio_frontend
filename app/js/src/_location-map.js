@@ -1,34 +1,48 @@
-function initMap() {
+async function initMap() {
   const mapEl = document.querySelector(".js-location__map-el");
 
-  const mapOptions = {
-    zoom: 15,
-    center: { lat: 34.0433683, lng: -118.2345218 },
-  };
+  try {
+    // Fetch the map settings from the API
+    const response = await fetch('/api/googleMapSettings');
+    
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error('Failed to fetch Google Map settings');
+    }
 
-  const map = new google.maps.Map(mapEl, mapOptions);
+    // Parse the JSON data from the response
+    const data = await response.json();
+    const { zoom, location, contentString } = data;
 
-  const marker = new google.maps.Marker({
-    position: { lat: 34.0433683, lng: -118.2345218 },
-    map: map,
-  });
+    // Set up map options using data from the API
+    const mapOptions = {
+      zoom: zoom,
+      center: location,
+    };
 
-  // Custom HTML content for the InfoWindow
-  const contentString = `
-    <div style="font-size: 18px; font-weight: bold;">
-      Horizon Studio
-    </div>
-  `;
+    // Initialize the map with the specified options
+    const map = new google.maps.Map(mapEl, mapOptions);
 
-  // Create an InfoWindow with the custom content
-  const infoWindow = new google.maps.InfoWindow({
-    content: contentString
-  });
+    // Create a marker for the location
+    const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
 
-  // Open the InfoWindow near the marker
-  infoWindow.open(map, marker);
+    // Create an InfoWindow with custom content
+    const infoWindow = new google.maps.InfoWindow({
+      content: contentString,
+    });
+
+    // Open the InfoWindow near the marker
+    infoWindow.open(map, marker);
+  } catch (error) {
+    // Handle any errors that occur during the fetch or map initialization
+    console.error("Error loading Google Map settings:", error);
+  }
 }
 
+// Wait for the DOM to load before initializing the map
 document.addEventListener("DOMContentLoaded", function () {
   initMap();
 });
